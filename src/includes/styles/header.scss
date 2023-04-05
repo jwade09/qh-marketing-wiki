@@ -1,0 +1,32 @@
+header{
+    border-bottom: solid 1px #f1f1f1;
+    font-family: $content;
+    z-index: 9;
+    position: relative;
+}
+.h-logo{
+    a{
+        text-decoration: none;
+    }
+    &:hover .wiki{
+        text-decoration: underline;
+        text-underline-offset: .2rem;
+    }
+}
+.logo{
+    width:100px;
+    img{
+        width: 100%;
+    }
+}
+.slash {
+    font-size: 4rem;
+    padding: 0 1rem;
+    font-weight: bold;
+    color: #ccc;
+}
+.wiki {
+    font-size: 2rem;
+    color: #666;
+    font-weight: 900;
+}
