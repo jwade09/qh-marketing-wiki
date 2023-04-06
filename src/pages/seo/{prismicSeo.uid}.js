@@ -1,7 +1,8 @@
 import React from "react"
 import Layout from "../../includes/layout"
 import { graphql, Link } from "gatsby"
-import { PrismicRichText } from "@prismicio/react"
+import { PrismicRichText, SliceZone } from "@prismicio/react"
+import { components } from "../../includes/slices"
 
 
 export const webi = graphql`
@@ -15,6 +16,31 @@ export const webi = graphql`
                   richText
                   text
                 }
+                body {
+                    ... on PrismicSeoDataBodyCallout {
+                      id
+                      primary {
+                        callout {
+                          id
+                          document {
+                            ... on PrismicCalloutSeo {
+                              id
+                              data {
+                                content {
+                                  richText
+                                }
+                                title {
+                                  text
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                      slice_type
+                      slice_label
+                    }
+                  }
               }
               uid
             }
@@ -50,6 +76,7 @@ const SeoPage = (props) => {
                     </nav>
                     <div class="content white well gutter seo">
                     <PrismicRichText field={props.data.prismicSeo.data.content.richText} />
+                    <SliceZone slices={props.data.prismicSeo.data.body} components={components} />
                     </div>
                 </div>
             </section>
