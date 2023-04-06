@@ -5,9 +5,9 @@ import { PrismicRichText, SliceZone } from "@prismicio/react"
 import { components } from "../../includes/slices"
 
 
-export const webi = graphql`
-    query Seo($id: String) {
-        prismicSeo(id: {eq: $id}) {
+export const emi = graphql`
+    query Email($id: String) {
+        prismicEmail(id: {eq: $id}) {
             data {
                 content {
                   richText
@@ -17,13 +17,13 @@ export const webi = graphql`
                   text
                 }
                 body {
-                    ... on PrismicSeoDataBodyCallout {
+                    ... on PrismicEmailDataBodyCallout {
                       id
                       primary {
                         callout {
                           id
                           document {
-                            ... on PrismicCalloutSeo {
+                            ... on PrismicCalloutEmail {
                               id
                               data {
                                 content {
@@ -44,7 +44,7 @@ export const webi = graphql`
               }
               uid
             }
-            allPrismicSeo(sort: {data: {order: ASC}}) {
+            allPrismicEmail(sort: {data: {order: ASC}}) {
               nodes {
                 uid
                 data {
@@ -57,29 +57,26 @@ export const webi = graphql`
     }
 `
 
-const SeoPage = (props) => {
+const EmailPage = (props) => {
     console.log(props)
     return (
         <Layout title={props.data.title}>    
             <section class="gradient-grey">
                 <div class="wrapper flex">
                     <nav class="well r gutter">
-                        
-                        <p class="acc nav-active"><strong>SEO</strong></p>
-                        <aside>
-                        {props.data.allPrismicSeo.nodes.map(node => (
-                            <div class="nav-item"><Link key={node.uid} to={`/seo/${node.uid}/`} activeClassName="active">{node.data.title.text}</Link></div>
-                        ))}
-                        </aside>
                         <div class="nav-section">
                             <p>
-                                <Link className="acc" to="/email/email-overview/"><strong>Email templates</strong></Link>
+                                <Link className="acc" to="/seo/seo-overview/"><strong>SEO</strong></Link>
                             </p>
                         </div>
+                        <p class="acc nav-active"><strong>Email templates</strong></p>
+                        {props.data.allPrismicEmail.nodes.map(node => (
+                            <div class="nav-item"><Link key={node.uid} to={`/email/${node.uid}/`} activeClassName="active">{node.data.title.text}</Link></div>
+                        ))}
                     </nav>
                     <div class="content white well gutter seo">
-                    <PrismicRichText field={props.data.prismicSeo.data.content.richText} />
-                    <SliceZone slices={props.data.prismicSeo.data.body} components={components} />
+                    <PrismicRichText field={props.data.prismicEmail.data.content.richText} />
+                    <SliceZone slices={props.data.prismicEmail.data.body} components={components} />
                     </div>
                 </div>
             </section>
@@ -87,4 +84,4 @@ const SeoPage = (props) => {
     )
 }
 
-export default SeoPage
+export default EmailPage
