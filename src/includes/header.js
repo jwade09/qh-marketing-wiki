@@ -9,15 +9,15 @@ const Header = () => {
   return (
     <section>
       <title></title>
-      <header class="white">
-        <div class="wrapper gutter-sm">
-          <div class="h-logo">
+      <header className="white">
+        <div className="wrapper gutter-sm">
+          <div className="h-logo">
             <Link to="/" className="flex align-center">
-              <div class="logo">
-                <img src={logo} />
+              <div className="logo">
+                <img src={logo} alt="Quantum Health logo" />
               </div>
-              <div class="slash">/</div>
-              <div class="wiki">MARKETING WIKI</div>
+              <div className="slash">/</div>
+              <div className="wiki">MARKETING WIKI</div>
             </Link>
           </div>
         </div>

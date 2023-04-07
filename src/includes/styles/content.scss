@@ -1,6 +1,7 @@
 .content {
     width: 100%;
     box-shadow: -5px 0 5px 0px rgb(0 0 0 / 4%);
+    min-height: 77vh;
 
     &.email {
         h1 {
@@ -67,5 +68,58 @@
         a{
             color: #fff;
         }
+    }
+}
+.box{
+    position: relative;
+    padding: 3rem;
+    margin: 3rem 0;
+    border-radius: 1rem;
+    border: solid 1px #ccc;
+    text-decoration: none;
+    box-sizing: border-box;
+    .icon{
+        justify-content: center;
+        display: flex;
+        i{
+            font-size: 7rem;
+            opacity: .5;
+        }
+    }
+    h3{
+        font-size: 3rem;
+        line-height: normal;
+        margin-bottom: 1rem;
+    }
+    p{
+        color: #324150;
+        margin: 0;
+    }
+    &:hover{
+        background-color: #f1f1f1;
+    }
+}
+.sample{
+    margin: 0 3rem 2rem 0;
+    box-sizing: border-box;
+    p{
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+}
+.color-sample{
+    width: 7.5rem;
+    height: 7.5rem;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    transition: all .2s;
+    cursor: pointer;
+    
+    &:hover{
+        opacity: .7;
+        outline: solid 3px #000;
+    }
+    &:active{
+        filter: brightness(1.4);
     }
 }

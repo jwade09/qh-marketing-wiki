@@ -58,23 +58,23 @@ export const emi = graphql`
 `
 
 const EmailPage = (props) => {
-    console.log(props)
+    
     return (
-        <Layout title={props.data.title}>    
-            <section class="gradient-grey">
-                <div class="wrapper flex">
-                    <nav class="well r gutter">
-                        <div class="nav-section">
+        <Layout>    
+            <section className="gradient-grey">
+                <div className="wrapper flex">
+                    <nav className="well r gutter">
+                        <div className="nav-section">
                             <p>
                                 <Link className="acc" to="/seo/seo-overview/"><strong>SEO</strong></Link>
                             </p>
                         </div>
-                        <p class="acc nav-active"><strong>Email templates</strong></p>
+                        <p className="acc nav-active"><strong>Email templates</strong></p>
                         {props.data.allPrismicEmail.nodes.map(node => (
-                            <div class="nav-item"><Link key={node.uid} to={`/email/${node.uid}/`} activeClassName="active">{node.data.title.text}</Link></div>
+                            <div className="nav-item"><Link key={node.uid} to={`/email/${node.uid}/`} activeClassName="active">{node.data.title.text}</Link></div>
                         ))}
                     </nav>
-                    <div class="content white well gutter seo">
+                    <div className="content white well gutter seo">
                     <PrismicRichText field={props.data.prismicEmail.data.content.richText} />
                     <SliceZone slices={props.data.prismicEmail.data.body} components={components} />
                     </div>
@@ -82,6 +82,16 @@ const EmailPage = (props) => {
             </section>
         </Layout>
     )
+}
+
+export const Head = (props) => {
+  console.log(props)
+  return(
+  <>
+      <title>{props.data.prismicEmail.data.title.text}</title>
+      <script src="https://kit.fontawesome.com/ba4e68cc54.js" crossorigin="anonymous"></script>
+  </>
+  )
 }
 
 export default EmailPage

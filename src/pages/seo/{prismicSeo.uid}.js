@@ -58,32 +58,41 @@ export const webi = graphql`
 `
 
 const SeoPage = (props) => {
-    console.log(props)
+    
     return (
-        <Layout title={props.data.title}>    
-            <section class="gradient-grey">
-                <div class="wrapper flex">
-                    <nav class="well r gutter">
+        <Layout>    
+            <section className="gradient-grey">
+                <div className="wrapper flex">
+                    <nav className="well r gutter">
                         
-                        <p class="acc nav-active"><strong>SEO</strong></p>
+                        <p className="acc nav-active"><strong>SEO</strong></p>
                         <aside>
                         {props.data.allPrismicSeo.nodes.map(node => (
-                            <div class="nav-item"><Link key={node.uid} to={`/seo/${node.uid}/`} activeClassName="active">{node.data.title.text}</Link></div>
+                            <div className="nav-item"><Link key={node.uid} to={`/seo/${node.uid}/`} activeClassName="active">{node.data.title.text}</Link></div>
                         ))}
                         </aside>
-                        <div class="nav-section">
+                        <div className="nav-section">
                             <p>
                                 <Link className="acc" to="/email/email-overview/"><strong>Email templates</strong></Link>
                             </p>
                         </div>
                     </nav>
-                    <div class="content white well gutter seo">
+                    <div className="content white well gutter seo">
                     <PrismicRichText field={props.data.prismicSeo.data.content.richText} />
                     <SliceZone slices={props.data.prismicSeo.data.body} components={components} />
                     </div>
                 </div>
             </section>
         </Layout>
+    )
+}
+
+export const Head = (props) => {
+    return(
+    <>
+        <title>{props.data.prismicSeo.data.title.text}</title>
+        <script src="https://kit.fontawesome.com/ba4e68cc54.js" crossorigin="anonymous"></script>
+    </>
     )
 }
 
