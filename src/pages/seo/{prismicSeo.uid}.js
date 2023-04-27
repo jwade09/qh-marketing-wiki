@@ -64,16 +64,19 @@ const SeoPage = (props) => {
             <section className="gradient-grey">
                 <div className="wrapper flex">
                     <nav className="well r gutter">
-                        
+                    <div className="nav-section">
                         <p className="acc nav-active"><strong>SEO</strong></p>
-                        <aside>
+                        <div className="type-selected">
                         {props.data.allPrismicSeo.nodes.map(node => (
                             <div className="nav-item"><Link key={node.uid} to={`/seo/${node.uid}/`} activeClassName="active">{node.data.title.text}</Link></div>
                         ))}
-                        </aside>
-                        <div className="nav-section">
+                        </div>
+                        
                             <p>
                                 <Link className="acc" to="/email/email-overview/"><strong>Email templates</strong></Link>
+                            </p>
+                            <p>
+                                <Link className="acc" to="/ads/ads-overview/"><strong>Ad templates</strong></Link>
                             </p>
                         </div>
                     </nav>

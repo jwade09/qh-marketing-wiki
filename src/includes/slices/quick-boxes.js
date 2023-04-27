@@ -8,10 +8,10 @@ export const QuickBoxes = (props) => {
             {props.slice.items.map(item => {
             return (
                 <Link to={`/${item.link.type}/${item.link.uid}/`} className="box g-2 flex justify-content" style={{color: (item.color)}}>
-                    <div className="g-5 icon">
+                    <div className="icon">
                         <i className={"fa-solid " + item.icon} />
                     </div>
-                    <div className="g-8">
+                    <div>
                         <h3>{item.qb_title.text}</h3>
                         <PrismicRichText field={item.qb_content.richText} />
                     </div>

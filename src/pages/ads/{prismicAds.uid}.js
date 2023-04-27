@@ -6,8 +6,8 @@ import { components } from "../../includes/slices"
 
 
 export const emi = graphql`
-    query Email($id: String) {
-        prismicEmail(id: {eq: $id}) {
+    query Ads($id: String) {
+        prismicAds(id: {eq: $id}) {
             data {
                 content {
                   richText
@@ -17,7 +17,32 @@ export const emi = graphql`
                   text
                 }
                 body {
-                    ... on PrismicEmailDataBodyCallout {
+                  ... on PrismicAdsDataBodyAssets {
+                    id
+                    slice_label
+                    slice_type
+                    items {
+                      asset_content {
+                        text
+                      }
+                      image {
+                        gatsbyImageData(layout: CONSTRAINED)
+                      }
+                      link {
+                        raw
+                      }
+                    }
+                  }
+                  ... on PrismicAdsDataBodyRichContent {
+                    slice_type
+                    slice_label
+                    primary {
+                      rich_content {
+                        text
+                      }
+                    }
+                  }
+                    ... on PrismicAdsDataBodyCallout {
                       id
                       primary {
                         callout {
@@ -44,7 +69,7 @@ export const emi = graphql`
               }
               uid
             }
-            allPrismicEmail(sort: {data: {order: ASC}}) {
+            allPrismicAds(sort: {data: {order: ASC}}) {
               nodes {
                 uid
                 data {
@@ -57,7 +82,7 @@ export const emi = graphql`
     }
 `
 
-const EmailPage = (props) => {
+const AdsPage = (props) => {
     
     return (
         <Layout>    
@@ -68,20 +93,20 @@ const EmailPage = (props) => {
                             <p>
                                 <Link className="acc" to="/seo/seo-overview/"><strong>SEO</strong></Link>
                             </p>
-                        <p className="acc nav-active"><strong>Email templates</strong></p>
-                        <div className="type-selected">
-                          {props.data.allPrismicEmail.nodes.map(node => (
-                              <div className="nav-item"><Link key={node.uid} to={`/email/${node.uid}/`} activeClassName="active">{node.data.title.text}</Link></div>
-                          ))}
-                        </div>
                             <p>
-                                <Link className="acc" to="/ads/ads-overview/"><strong>Ad templates</strong></Link>
+                                <Link className="acc" to="/email/email-overview/"><strong>Email templates</strong></Link>
                             </p>
+                        <p className="acc nav-active"><strong>Ad templates</strong></p>
+                        <div className="type-selected">
+                        {props.data.allPrismicAds.nodes.map(node => (
+                            <div className="nav-item"><Link key={node.uid} to={`/ads/${node.uid}/`} activeClassName="active">{node.data.title.text}</Link></div>
+                        ))}
+                        </div>
                         </div>
                     </nav>
                     <div className="content white well gutter seo">
-                    <PrismicRichText field={props.data.prismicEmail.data.content.richText} />
-                    <SliceZone slices={props.data.prismicEmail.data.body} components={components} />
+                    <PrismicRichText field={props.data.prismicAds.data.content.richText} />
+                    <SliceZone slices={props.data.prismicAds.data.body} components={components} />
                     </div>
                 </div>
             </section>
@@ -93,10 +118,10 @@ export const Head = (props) => {
   console.log(props)
   return(
   <>
-      <title>{props.data.prismicEmail.data.title.text}</title>
+      <title>{props.data.prismicAds.data.title.text}</title>
       <script src="https://kit.fontawesome.com/ba4e68cc54.js" crossorigin="anonymous"></script>
   </>
   )
 }
 
-export default EmailPage
+export default AdsPage

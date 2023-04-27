@@ -37,8 +37,23 @@
         border-radius: 1rem;
         background-color: #f1f1f1;
         border: 1px solid #ccc;
-        max-width: 60%;
+        max-width: 100%;
         padding: 1rem;
+        box-sizing: border-box;
+    }
+    .asset{
+        margin: 2rem 0;
+        text-decoration: none;
+        color: $grey;
+        img{
+            &:hover{
+                border: 1px solid $grey;
+            }
+        }
+        p{
+            margin-top: 1rem;
+            text-align: center;
+        }
     }
     pre {
         padding: 1rem 2rem;
@@ -79,10 +94,10 @@
     text-decoration: none;
     box-sizing: border-box;
     .icon{
-        justify-content: center;
+        margin-right: 3rem;
         display: flex;
         i{
-            font-size: 7rem;
+            font-size: 5rem;
             opacity: .5;
         }
     }
