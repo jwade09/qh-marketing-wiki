@@ -42,12 +42,13 @@
         box-sizing: border-box;
     }
     .asset{
-        margin: 2rem 0;
+        margin: 2rem 0 0;
         text-decoration: none;
         color: $grey;
+        width: 31%;
         img{
             &:hover{
-                border: 1px solid $grey;
+                border: 2px solid $grey;
             }
         }
         p{
