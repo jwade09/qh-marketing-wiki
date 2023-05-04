@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 
 export const QuickBoxes = (props) => {
     return (
-        <div className="flex justify-content">
+        <div className="flex justify-content wrap">
             {props.slice.items.map(item => {
             return (
                 <Link to={`/${item.link.type}/${item.link.uid}/`} className="box g-2 flex justify-content" style={{color: (item.color)}}>

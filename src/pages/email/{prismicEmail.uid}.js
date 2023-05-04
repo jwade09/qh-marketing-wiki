@@ -17,6 +17,15 @@ export const emi = graphql`
                   text
                 }
                 body {
+                  ... on PrismicEmailDataBodyRichContent {
+                    slice_type
+                    slice_label
+                    primary {
+                      rich_content {
+                        richText
+                      }
+                    }
+                  }
                     ... on PrismicEmailDataBodyCallout {
                       id
                       primary {

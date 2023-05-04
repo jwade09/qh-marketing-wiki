@@ -62,10 +62,11 @@ const IndexPage = (props) => {
                             <p>
                                 <Link className="acc" to="/seo/seo-overview/"><strong>SEO</strong></Link>
                             </p>
-                        </div>
-                        <div className="nav-section">
                             <p>
                                 <Link className="acc" to="/email/email-overview/"><strong>Email templates</strong></Link>
+                            </p>
+                            <p>
+                                <Link className="acc" to="/ads/ads-overview/"><strong>Ad templates</strong></Link>
                             </p>
                         </div>
                     </nav>

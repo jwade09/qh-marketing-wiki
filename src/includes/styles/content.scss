@@ -88,7 +88,7 @@
 .box{
     position: relative;
     padding: 3rem;
-    margin: 3rem 0;
+    margin: 1.5rem 0;
     border-radius: 1rem;
     border: solid 1px #ccc;
     text-decoration: none;
@@ -96,6 +96,7 @@
     .icon{
         margin-right: 3rem;
         display: flex;
+        min-width: 5rem;
         i{
             font-size: 5rem;
             opacity: .5;
