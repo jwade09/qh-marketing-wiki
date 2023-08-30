@@ -9,6 +9,15 @@ query Home {
   prismicHome {
     data {
       body {
+        ... on PrismicHomeDataBodyRichContent {
+          slice_type
+          slice_label
+          primary {
+            rich_content {
+              richText
+            }
+          }
+        }
         ... on PrismicHomeDataBodyQuickBoxes {
           id
           slice_label

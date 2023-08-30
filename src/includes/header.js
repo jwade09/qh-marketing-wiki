@@ -1,5 +1,5 @@
 import * as React from "react"
-import { graphql, Link, useStaticQuery } from "gatsby"
+import { Link } from "gatsby"
 
 import logo from "../images/qh-logo.svg"
 
